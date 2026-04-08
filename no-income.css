@@ -836,6 +836,68 @@ strong { font-weight: 600; }
   margin-top: 20px;
 }
 
+/* ===== Licensed States ===== */
+.states-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 32px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.states-grid span {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.8);
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  transition: all var(--transition);
+}
+
+.states-grid span:hover {
+  background: rgba(3,191,143,0.15);
+  border-color: var(--teal);
+  color: #fff;
+}
+
+.states-verify {
+  text-align: center;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+}
+
+.states-verify a {
+  color: var(--teal);
+  text-decoration: underline;
+}
+
+/* ===== Footer Disclaimers ===== */
+.footer-disclaimers {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.disclaimer-block p {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.35);
+  line-height: 1.7;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.disclaimer-block strong {
+  color: rgba(255,255,255,0.5);
+  font-weight: 600;
+}
+
 /* ===== Final CTA ===== */
 .section-cta {
   background: linear-gradient(160deg, var(--dark) 0%, #0a1e3d 100%);
