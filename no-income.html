@@ -646,17 +646,33 @@
     // Form
     document.getElementById('leadForm').addEventListener('submit', (e) => {
       e.preventDefault();
-      const card = document.querySelector('.hero-form-card');
-      card.innerHTML = `
-        <div style="text-align:center;padding:48px 24px;">
-          <svg viewBox="0 0 48 48" width="56" height="56" fill="none" stroke="#03bf8f" stroke-width="2.5">
-            <circle cx="24" cy="24" r="20"/><path d="M14 24l6 6 14-14"/>
-          </svg>
-          <h3 style="margin:16px 0 8px;color:#0B1B3A;font-size:1.25rem;">I'll Call You Shortly!</h3>
-          <p style="color:#555;font-size:0.92rem;line-height:1.7;margin-bottom:4px;">Thank you! I'll reach out within a few hours to schedule your free consultation.</p>
-          <p style="color:#888;font-size:0.82rem;margin-bottom:20px;">Want to talk sooner?</p>
-          <a href="tel:6579006264" style="display:inline-block;background:#fbc407;color:#0B1B3A;padding:14px 32px;border-radius:50px;font-weight:700;text-decoration:none;font-size:0.9rem;">Call Me Now — (657) 900-6264</a>
-        </div>`;
+      const form = e.target;
+      const btn = form.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+
+      const formData = new FormData(form);
+      fetch('https://formsubmit.co/ajax/Duc@24-7Mortgage.com', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: formData
+      }).then(r => r.json()).then(() => {
+        const card = document.querySelector('.hero-form-card');
+        card.innerHTML = `
+          <div style="text-align:center;padding:48px 24px;">
+            <svg viewBox="0 0 48 48" width="56" height="56" fill="none" stroke="#03bf8f" stroke-width="2.5">
+              <circle cx="24" cy="24" r="20"/><path d="M14 24l6 6 14-14"/>
+            </svg>
+            <h3 style="margin:16px 0 8px;color:#0B1B3A;font-size:1.25rem;">I'll Call You Shortly!</h3>
+            <p style="color:#555;font-size:0.92rem;line-height:1.7;margin-bottom:4px;">Thank you! I'll reach out within a few hours to schedule your free consultation.</p>
+            <p style="color:#888;font-size:0.82rem;margin-bottom:20px;">Want to talk sooner?</p>
+            <a href="tel:6579006264" style="display:inline-block;background:#fbc407;color:#0B1B3A;padding:14px 32px;border-radius:50px;font-weight:700;text-decoration:none;font-size:0.9rem;">Call Me Now — (657) 900-6264</a>
+          </div>`;
+      }).catch(() => {
+        btn.disabled = false;
+        btn.textContent = 'REQUEST MY FREE CONSULTATION';
+        alert('Something went wrong. Please call directly at (657) 900-6264.');
+      });
     });
 
     // FAQ accordion
